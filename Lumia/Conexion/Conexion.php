@@ -15,7 +15,7 @@
           Conexion::$conexion = new PDO('mysql:host=localhost;dbname=covid19', 'jes', '7321');
           Conexion::$conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
           Conexion::$conexion->exec("SET CHARACTER SET utf8");
-          }catch(Exception $e){
+        }catch(Exception $e){
             print "¡Error!: " . $e->getMessage() . "<br/>";
           }
       }

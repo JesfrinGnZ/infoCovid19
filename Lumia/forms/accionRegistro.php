@@ -13,13 +13,17 @@
     $tipoDeUsuario=$_POST['tipoDeUsuario'];
     $usuario=$_POST['username'];
     $contrasena=$_POST['password'];
-    $sql="INSERT INTO USUARIO VALUES(?,?,?,?)";
+    $sql="INSERT INTO USUARIO VALUES(?,?,?,?,0)";
     $resultado=Conexion::$conexion->prepare($sql);
 
     try {
       $resultado->execute(array($correo,$tipoDeUsuario,$contrasena,$usuario));
       session_start();
       $_SESSION['usuario']=$usuario;
+      $_SESSION['correo']=$correo;
+      $_SESSION['tipoDeUsuario']=$tipoDeUsuario;
+      $_SESSION['verificado']=0;
+
       header("Location: ../indexCovid.php");
     } catch (PDOException $e) {
       echo $e->getMessage();
