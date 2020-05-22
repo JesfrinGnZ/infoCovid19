@@ -1,10 +1,11 @@
 <?php
   include ("../../Conexion/Conexion.php");
-  $sql = "SELECT * FROM ANUNCIO";
+  $correoUsuario=$_GET['correoUsuario'];
+  $sql = "SELECT * FROM ANUNCIO WHERE correoUsuario = ?";
   $resultado=Conexion::$conexion->prepare($sql);
-  $resultado->execute();
+  $resultado->execute(array($correoUsuario));
   if($resultado->rowCount()<=0){
-    echo "Sin resultados";
+    echo $correoUsuario;
   }else{
     $json=array();
     while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
@@ -12,7 +13,8 @@
             'nombre' => $registro['nombre'],
             'descripcion' => $registro['descripcion'],
             'link' => $registro['linkParaDeshabilitar'],
-            'verificado' => $registro['verificado']
+            'verificado' => $registro['verificado'],
+            'imagen' => $registro['direccionImagen']
         );
       }
       $jsonString = json_encode($json);

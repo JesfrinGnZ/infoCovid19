@@ -28,7 +28,7 @@
       <div class="container d-flex align-items-center">
 
         <div class="logo mr-auto">
-          <h1><a href="index.html">Anuncios</a></h1>
+          <h2>Anuncios</h2>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -40,6 +40,7 @@
         <?php
         if(isset($_SESSION['usuario'])){
           echo "<li><a href=\"#usuario\">".$_SESSION['usuario']."</a></li>";
+          echo "<input id=\"correoUsuario\" type=\"hidden\" value=\"".$_SESSION['correo']."\">";
           echo "<button href=\"cerrarSesion.php\" type=\"button\" class=\"btn btn-danger\">Cerrar sesion</button>";
         }
          ?>
@@ -48,19 +49,47 @@
     </header><!-- End Header -->
     <br><br><br><br>
 
-    <div class="container">
+
+<div class="section" class="contact section-bg">
+  <div class="container">
+    <h3>Creacion de anuncio</h3>
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10">
+        <form method="POST" id="creacionAnuncio" action="creacionAnuncio.php" enctype="multipart/form-data">
+          <?php if (isset($_SESSION['usuario'])) {
+            echo "<input type=\"hidden\" name=\"correo\" id=\"correo\" value=\"".$_SESSION['correo']."\">";
+          } ?>
+          <div class="form-group">
+            <input  required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="nombreAnuncio" name="nombreAnuncio" placeholder="nombre de Anuncio*">
+          </div>
+          <div class="form-group">
+            <input required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="descripcionAnuncio" name="descripcionAnuncio" placeholder="Descripcion de Anuncio*">
+          </div>
+          <div class="form-group">
+            <input required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="link" name="link" placeholder="link">
+          </div>
+          <div class="form-group">
+            <input required type="file" id="imagen" name="imagen" size="20" class="form-control">
+          </div>
+          <button required type="submit" class="btn btn-success text-center" name="button">Guardar anuncio</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+  <div class="container">
+    <h3>Mis anuncios</h3>
       <div class="row d-flex justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-10">
           <input class="form-control" id="search" type="text" placeholder="Buscar" aria-label="Search">
           <p id="parrafo"></p>
         </div>
       </div>
-    </div>
 
-<style>
 
-</style>
-    <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <table class="table">
@@ -69,7 +98,9 @@
       <th scope="col">Nombre</th>
       <th scope="col">Descripcion</th>
       <th scope="col">Link para deshabilitar</th>
-      <th scope="col">verificado</th>
+      <th scope="col">Verificado</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Borrar</th>
     </tr>
   </thead>
   <tbody id="anuncios"></tbody>
@@ -78,8 +109,6 @@
 
         </div>
     </div>
-
-
 
     <!-- Modal -->
     <div class="modal fade" id="modalCreacionAnuncio" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -92,21 +121,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form id="creacionAnuncio">
-              <?php if (isset($_SESSION['usuario'])) {
-                echo "<input type=\"hidden\" id=\"correo\" value=\"".$_SESSION['correo']."\">";
-              } ?>
-              <div class="form-group">
-                <input autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="nombreAnuncio" placeholder="nombre de Anuncio*">
-              </div>
-              <div class="form-group">
-                <input autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="descripcionAnuncio" placeholder="Descripcion de Anuncio*">
-              </div>
-              <div class="form-group">
-                <input autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="link" placeholder="link">
-              </div>
-              <button type="submit" class="btn btn-primary btn-block text-center" name="button">Guardar anuncio</button>
-            </form>
+
           </div>
 <!--          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -115,6 +130,30 @@
         </div>
       </div>
     </div>
+
+
+<!-- MODAL PARA VER LAS IMAGENES -->
+<!-- Modal -->
+<div class="modal fade" id="modalImagen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Creacion de anuncio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                <img src="imagenesAnuncios/km.jpg" id="imagenDeAnuncio" class="cambio-imagen"width="400" height="453">
+      </div>
+<!--          <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Guardar anuncio</button>
+      </div>-->
+    </div>
+  </div>
+</div>
+
 
     <script type="text/javascript" src="anuncio.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
