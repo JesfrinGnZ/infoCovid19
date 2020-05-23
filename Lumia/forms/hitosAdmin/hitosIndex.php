@@ -3,7 +3,7 @@
   <head>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <meta charset="utf-8">
-    <title>Anuncios</title>
+    <title>Administracion de Hitos</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -28,7 +28,7 @@
       <div class="container d-flex align-items-center">
 
         <div class="logo mr-auto">
-          <h2>Anuncios</h2>
+          <h2>Administracion de Hitos</h2>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -37,9 +37,7 @@
           <ul>
             <!-- Button trigger modal -->
             <li><a href="../../indexCovid.php">Pagina principal</a></li>
-            <li><a href="#crearAnuncio">Crear anuncio</a></li>
-            <li><a href="#misAnuncios">Mis anuncios</a></li>
-            <li><a href="../hitos/hitosIndex.php">Hitos</a></li>
+            <li><a href="../anunciosAdmin/anuncioIndex.php">Administracion de anuncios</a></li>
             <li><a href="../../cerrarSesion.php">Cerrar sesion</a></li>
         <?php
         if(isset($_SESSION['usuario'])){
@@ -112,7 +110,6 @@
   </div>
 </div>
 
-<br><br><br><br>
 
 <!-- MODAL PARA VER LAS IMAGENES -->
 <!-- Modal -->

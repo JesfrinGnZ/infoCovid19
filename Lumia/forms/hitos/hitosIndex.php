@@ -3,7 +3,7 @@
   <head>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <meta charset="utf-8">
-    <title>Anuncios</title>
+    <title>Hitos</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -28,7 +28,7 @@
       <div class="container d-flex align-items-center">
 
         <div class="logo mr-auto">
-          <h2>Anuncios</h2>
+          <h2>Hitos</h2>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -37,9 +37,9 @@
           <ul>
             <!-- Button trigger modal -->
             <li><a href="../../indexCovid.php">Pagina principal</a></li>
-            <li><a href="#crearAnuncio">Crear anuncio</a></li>
-            <li><a href="#misAnuncios">Mis anuncios</a></li>
-            <li><a href="../hitos/hitosIndex.php">Hitos</a></li>
+            <li><a href="#crearAnuncio">Crear Hito</a></li>
+            <li><a href="#misAnuncios">Mis Hitos</a></li>
+            <li><a href="../anuncios/anuncioIndex.php">Anuncios</a></li>
             <li><a href="../../cerrarSesion.php">Cerrar sesion</a></li>
         <?php
         if(isset($_SESSION['usuario'])){
@@ -53,28 +53,28 @@
     <br><br><br><br>
 
 
-<div class="section" id="crearAnuncio" class="contact section-bg">
+<div class="section" id="crearHito" class="contact section-bg">
   <div class="container">
-    <h3>Creacion de anuncio</h3>
+    <h3>Creacion de Hito</h3>
     <div class="row d-flex justify-content-center">
       <div class="col-md-10">
-        <form method="POST" id="creacionAnuncio" action="creacionAnuncio.php" enctype="multipart/form-data">
+        <form method="POST" id="crearHito" action="#">
           <?php if (isset($_SESSION['usuario'])) {
             echo "<input type=\"hidden\" name=\"correo\" id=\"correo\" value=\"".$_SESSION['correo']."\">";
           } ?>
           <div class="form-group">
-            <input  required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="nombreAnuncio" name="nombreAnuncio" placeholder="nombre de Anuncio*">
+            <input id="fechaSuceso" name="fechaSuceso" class="form-control" type="date" value="2000-01-01" required>
           </div>
           <div class="form-group">
-            <input required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="descripcionAnuncio" name="descripcionAnuncio" placeholder="Descripcion de Anuncio*">
+            <textarea  id="detalle" name="detalle" class="form-control" rows="5" placeholder="Detalle del suceso*"></textarea>
           </div>
           <div class="form-group">
-            <input required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="link" name="link" placeholder="link">
+            <textarea id="comentario" id="comentario" class="form-control" rows="3" placeholder="Comentario de usuario"></textarea>
           </div>
           <div class="form-group">
-            <input required type="file" id="imagen" name="imagen" size="20" class="form-control">
+            <input id="fuente" name="fuente" required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" placeholder="Fuente*">
           </div>
-          <button required type="submit" class="btn btn-success text-center" name="button">Guardar anuncio</button>
+          <button required type="submit" class="btn btn-success text-center" name="button">Guardar Hito</button>
         </form>
       </div>
     </div>
@@ -85,34 +85,16 @@
 
 <div class="section" id="misAnuncios">
   <div class="container">
-    <h3>Mis anuncios</h3>
+    <h3>Mis Hitos</h3>
       <div class="row d-flex justify-content-center">
         <div class="col-md-10">
           <input class="form-control" id="search" type="text" placeholder="Buscar" aria-label="Search">
           <p id="parrafo"></p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">Link para deshabilitar</th>
-      <th scope="col">Verificado</th>
-      <th scope="col">Imagen</th>
-      <th scope="col">Borrar</th>
-    </tr>
-  </thead>
-  <tbody id="anuncios"></tbody>
-</table>
-        </div>
-    </div>
   </div>
 </div>
 
-<br><br><br><br>
 
 <!-- MODAL PARA VER LAS IMAGENES -->
 <!-- Modal -->
@@ -128,16 +110,17 @@
       <div class="modal-body">
                 <img src="imagenesAnuncios/km.jpg" id="imagenDeAnuncio" class="cambio-imagen"width="400" height="453">
       </div>
-<!--          <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar anuncio</button>
-      </div>-->
     </div>
   </div>
 </div>
 
+<div class="container" id="prueba">
+  <div class="row">
+    <h3>HOLA MUNDO</h3>
+  </div>
+</div>
 
-    <script type="text/javascript" src="anuncio.js"></script>
+    <script type="text/javascript" src="hitos.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>

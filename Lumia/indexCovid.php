@@ -5,13 +5,6 @@
   <?php
   include ("Conexion/Conexion.php");
   session_start();
-  if (isset($_SESSION['usuario'])) {
-    //echo "SI EXISTE USUARIO";
-    //session_destroy();
-  }else{
-    //echo "NO EXISTE USUARIO";
-
-  }
    ?>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -61,13 +54,13 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="#header">Home</a></li>
+          <li><a href="#infoPublicidad">Publicidad</a></li>
           <li><a href="#queBuscamos">Que buscamos?</a></li>
           <li><a href="#portfolio">Informacion COVID19</a></li>
           <li><a href="#hitos">Hitos</a></li>
-          <li><a href="#contact">Contacto</a></li>
       <?php
       if(isset($_SESSION['usuario'])){
-        echo "<li><a href=\"#usuario\">".$_SESSION['usuario']."</a></li>";
+        echo "<li><a href=\"#perfil\">".$_SESSION['usuario']."</a></li>";
       }
        ?>
      </ul>
@@ -87,7 +80,7 @@
       <h2>A un espacio donde puedes compartir informacion e informarte sobre el COVID19</h2>
       <?php
         if(isset($_SESSION['usuario'])){
-          echo "<form action=\"indexCovid.php\" method=\"post\">
+          echo "<form action=\"cerrarSesion.php\" method=\"post\">
                   <input class=\"btn btn-danger\" type=\"submit\" value=\"Cerrar Sesion\">
                 </form>";
           //session_destroy();
@@ -125,11 +118,14 @@
       <h2>Publicidad?</h2>
       <?php
         if(isset($_SESSION['usuario'])){
-          echo "<form id=\"login-form\" class=\"form\" action=\"forms/anuncios/anuncioIndex.php\" method=\"post\">";
+          echo "<form id=\"login-form\" class=\"form\" action=\"validacionUsuarioAnuncio.php\" method=\"post\">";
           echo "<button type=\"submit\" class=\"btn btn-primary\">Administrar Anuncios</button>";
           echo "</form>";
         }else{
           echo "<h3 class=\"text-center\">Anunciate con nosotros<h3>";
+          echo "<form action=\"forms/login.php\" method=\"post\">
+                  <input class=\"btn btn-success\" type=\"submit\" value=\"Iniciar Sesion\">
+                </form>";
         }
        ?>
     </div>
@@ -156,7 +152,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4><a href="">Dashboard</a></h4>
+              <h4><a href="#">Dashboard</a></h4>
               <p>Herramienta para analizar fuentes de datos mundiales por medio de filtros de datos y gráficas</p>
             </div>
           </div>
@@ -164,7 +160,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Proyectos Cunoc</a></h4>
+              <h4><a href="https://www.facebook.com/">Proyectos Cunoc</a></h4>
               <p>Pagina de facebook donde se encuentra informacion relacionada a loa proyectos del CUNOC contra el covid19</p>
             </div>
           </div>
@@ -172,7 +168,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Ingenieria Cunoc</a></h4>
+              <h4><a href="http://ingenieria.cunoc.usac.edu.gt/">Ingenieria Cunoc</a></h4>
               <p>Pagina de Ingeniraia CUNOC</p>
             </div>
           </div>
@@ -356,60 +352,65 @@
     </div>
 
 
+    <!--==============Seccion Hitos=========== -->
+<?php
+
+echo "
+<section id=\"hitos\">
+  <div class=\"container\">
+    <div class=\"section-title\">
+      <h2>Hitos</h2>";
+      if(isset($_SESSION['usuario'])){
+        echo "<form id=\"login-form\" class=\"form\" action=\"validacionUsuarioHito.php\" method=\"post\">";
+        echo "<button type=\"submit\" class=\"btn btn-primary\">Administrar Hitos</button>";
+        echo "</form>";
+      }else{
+        echo "<h3 class=\"text-center\">Inicia sesion para crear Hitos<h3>";
+        echo "<form action=\"forms/login.php\" method=\"post\">
+                <input class=\"btn btn-success\" type=\"submit\" value=\"Iniciar Sesion\">
+              </form>";
+      }
+
+echo "</div>
+  </div>
+</section>";
+ ?>
+
+
+
     <!-- ============Seccion perfil =============-->
     <?php
-      if(isset($_SESSION['usuario'])){
-        echo "<section id=\"usuario\" class=\"about\">";
-        echo "<div class=\"row\">";
-        echo "<div class=\"col-lg-6\">
-          <img src=\"assets/img/about.jpg\" class=\"img-fluid\" alt=\"\">
-          </div>";
-        echo "<div class=\"col-lg-6 pt-4 pt-lg-0\">";
-        echo "<h3>Perfil</h3>";
-    //Consulta del usuario
-        echo "<ul>";
-        echo "<li><strong>Correo:</strong>".$_SESSION['correo']."</li>";
-        echo "<li><strong>Usuario:</strong>".$_SESSION['usuario']."</li>";
-        echo "<li><strong>Tipo:</strong>".$_SESSION['tipoDeUsuario']."</li><br><br>";
-        echo "<form action=\"indexCovid.php\" method=\"post\">
-                <input class=\"btn btn-danger\" type=\"submit\" value=\"Cerrar Sesion\">
-              </form>";
 
-        echo "</ul>";
-        echo "</div>";
-        echo "</div>";
-        echo "</section>";
-      }
-     ?>
-
-
-    <!--==============Seccion Hitos=========== -->
-    <?php
-      if(isset($_SESSION['usuario'])){
-        echo "<section id=\"hitos\" class=\"about\">";
-        echo "<div class=\"container\">";
-        echo "<div class=\"row\">";
-        echo "<div class=\"col-lg-1\">";
-        echo "</div>";
-        echo "<div class=\"col-lg-11\">";
-        echo "<h3>Hitos</h3>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</section>";
-      }else{
-        echo "<section id=\"hitos\" class=\"about\">";
-        echo "<div class=\"container\">";
-        echo "<div class=\"row\">";
-        echo "<div class=\"col-lg-9\">";
-        echo "<h3>Hitos</h3>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</section>";
-      }
+    if(isset($_SESSION['usuario'])){
+      echo "
+      <section id=\"perfil\">
+        <div class=\"container\">
+          <div class=\"section-title\">
+            <h2>Perfil</h2>";
+            echo "<div class=\"row\">";
+            echo "<div class=\"col-lg-6\">
+              <img src=\"assets/img/about.jpg\" class=\"img-fluid\" alt=\"\">
+              </div>";
+          //Consulta del usuario
+          echo "<div class=\"col-lg-6 pt-4 pt-lg-0 text-left\">";
+          echo "<ul class=\"list-group\">";
+          echo "<li class=\"list-group-item\"><strong>Correo:</strong>".$_SESSION['correo']."</li>";
+          echo "<li class=\"list-group-item\"><strong>Usuario:</strong>".$_SESSION['usuario']."</li>";
+          echo "<li class=\"list-group-item\"><strong>Tipo:</strong>".$_SESSION['tipoDeUsuario']."</li><br><br>";
+          echo "</ul>";
+          echo "<form action=\"cerrarSesion.php\" method=\"post\">
+                  <input class=\"btn btn-danger\" type=\"submit\" value=\"Cerrar Sesion\">
+                </form>";
+          echo "</div>";
+          //FIn de trader_line
+          echo "</div>";
+      echo "</div>
+        </div>
+      </section>";
+    }
 
      ?>
+
 
 
     <div class="container">
@@ -422,8 +423,8 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit eius consequatur ex aliquid fuga</p>
+          <h2>Contacto</h2>
+          <p>Contactenos</p>
         </div>
 
         <div class="row mt-5 justify-content-center">
@@ -456,122 +457,11 @@
 
         </div>
 
-        <div class="row mt-5 justify-content-center">
-          <div class="col-lg-10">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="form-row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validate"></div>
-                </div>
-                <div class="col-md-6 form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validate"></div>
-                </div>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                <div class="validate"></div>
-              </div>
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-
-        </div>
-
       </div>
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
 
-  <div class="container">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </div>
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Lumia</h3>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container d-md-flex py-4">
-
-      <div class="mr-md-auto text-center text-md-left">
-        <div class="copyright">
-          &copy; Copyright <strong><span>Lumia</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/lumia-bootstrap-business-template/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-      </div>
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 

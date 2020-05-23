@@ -15,7 +15,7 @@
     #login .container #login-row #login-column #login-box {
       margin-top: 80px;
       max-width: 600px;
-      height: 460px;
+      height: 490px;
       border: 3px solid #00aae4;
       background-color: #ffffff;
     }
@@ -58,12 +58,15 @@
                         <div class="form-group text-center">
                             <input type="submit" name="submit" class="btn btn-info btn-md" value="Registrarme">
                         </div>
+                        <div class="text-right">
+                          <a href="login.php">Iniciar Sesion</a>
+                        </div>
                     </form>
-                    <form class="" action="../indexCovid.php" method="post">
-                      <div id="register-link" class="text-center  ">
-                        <input class="btn btn-link" type="submit" value="Volver a pagina principal" />
+                      <div class="text-center">
+                        <a class="text-right" href="../indexCovid.php">Volver a pagina principal</a>
                       </div>
-                    </form>
+
+
                 </div>
             </div>
         </div>
