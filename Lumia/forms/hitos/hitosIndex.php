@@ -87,13 +87,26 @@
   <div class="container">
     <h3>Mis Hitos</h3>
       <div class="row d-flex justify-content-center">
-        <div class="col-md-10">
-          <input class="form-control" id="search" type="text" placeholder="Buscar" aria-label="Search">
-          <p id="parrafo"></p>
+        <div class="form-group col-md-10">
+          <div>
+            <select id="seleccionTipoDeHitos" class="browser-default custom-select">
+              <option value="misAprobados">Mis hitos aprobados</option>
+              <option value="misSinAprobar">Mis hitos sin Aprobar</option>
+              <option value="todosMios">Todos mis hitos</option>
+              <option value="todosAprobados">Todos los aprobados</option>
+              <option value="todosSinAprobar">Todos sin aprobar</option>
+              <option value="todos">Todos</option>
+
+            </select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button type="button" class="buscar-Hitos btn btn-info">Buscar</button>
         </div>
       </div>
   </div>
 </div>
+
 
 
 <!-- MODAL PARA VER LAS IMAGENES -->
@@ -114,10 +127,7 @@
   </div>
 </div>
 
-<div class="container" id="prueba">
-  <div class="row">
-    <h3>HOLA MUNDO</h3>
-  </div>
+<div class="container" id="misHitos">
 </div>
 
     <script type="text/javascript" src="hitos.js"></script>

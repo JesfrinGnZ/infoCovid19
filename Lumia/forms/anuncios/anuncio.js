@@ -53,6 +53,7 @@ Funcion que permite obtener los anuncios creados
            url: 'listarAnuncios.php',
            data: {correoUsuario},
            success: function(response){
+             console.log(response);
              let anuncios = JSON.parse(response);
              let template= '';
              anuncios.forEach(anuncio=>{
