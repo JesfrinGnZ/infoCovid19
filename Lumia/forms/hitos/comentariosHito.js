@@ -2,6 +2,9 @@ $(document).ready(function(){
 
 
 /**Funcion para guardar comentario*/
+obtenerHitoYComentarios();
+
+
 
   $(document).on('click','.guardar-comentario',function(){
     const postData ={
@@ -34,8 +37,29 @@ $(document).ready(function(){
 
 
   function obtenerHitoYComentarios(){
-    console.log("HOLA DESDE JS");
-
+    let idHito=$('#idHito').val();
+    console.log("HOLA DESDE JS:"+idHito);
+    let template="";
+    $.ajax({
+      type: "GET",
+      url: 'listarComentarios.php',
+      data: {idHito},
+      success: function(response){
+      //  console.log(response);
+       let hitos = JSON.parse(response);
+        hitos.forEach(hito=>{
+          template+= `
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-danger">${hito.idUsuario}</li>
+              <li class="list-group-item">Fecha de publicacion:${hito.fecha}</li>
+              <li class="list-group-item">${hito.descripcion}</li>
+            </ul>
+            <br>
+          `
+        });
+        $('#comentarios').html(template);
+      }
+    });
   }
 
 });

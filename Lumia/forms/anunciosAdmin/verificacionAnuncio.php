@@ -32,7 +32,7 @@ session_start();
        <div class="container d-flex align-items-center">
 
          <div class="logo mr-auto">
-           <h2>Ver Hito</h2>
+           <h2>Ver Anuncio</h2>
            <!-- Uncomment below if you prefer to use an image logo -->
            <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
          </div>
@@ -47,7 +47,7 @@ session_start();
          if(isset($_SESSION['usuario'])){
            echo "<li><a href=\"#usuario\">".$_SESSION['usuario']."</a></li>";
            echo "<input id=\"correoUsuario\" type=\"hidden\" value=\"".$_SESSION['correo']."\">";
-           echo "<input id=\"idHito\" type=\"hidden\" value=\"".$_POST['idHito']."\">";
+           echo "<input id=\"idAnuncio\" type=\"hidden\" value=\"".$_POST['idAnuncio']."\">";
            //echo "<h5>".$_POST['idHito']."<h5>";
          }
           ?>
@@ -56,49 +56,60 @@ session_start();
      </header><!-- End Header -->
      <br><br><br><br>
 
+<!--OPCIONES PARA HITO--->
+<div class="section" id="hitoActual">
+  <div class="section" id="crearAnuncio" class="contact section-bg">
+    <div class="container">
+      <h3>Opciones para hito</h3>
+      <?php
+       echo "<button type=\"button\"";
+       $sql = "SELECT verificado FROM ANUNCIO WHERE idAnuncio=?";
+       $resultado=Conexion::$conexion->prepare($sql);
+       $resultado->execute(array($_POST['idAnuncio']));
+       while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+         if($registro['verificado']==1){
+           echo "id=\"accionHito\" class=\"btn btn-warning\">Desactivar";
+         }else{
+           echo "id=\"accionHito\" class=\"btn btn-info\">Activar";
+         }
+       }
+       echo "</button>";
+       ?>
+      <button type="button" id="borrarHito" class="buscar-hitos btn btn-danger">Borrar</button>
+    </div>
+  </div>
 
- <div class="section" id="crearAnuncio" class="contact section-bg">
-   <div class="container">
-     <form id="formComentario" action="#" method="post">
-       <div class="form-group">
-         <textarea  required id="comentario" name="comentario" class="form-control" rows="4" placeholder="Comentario*"></textarea>
-       </div>
-       <div class="form-group text-center">
-         <button type="button" class="guardar-comentario btn btn-info">Guardar Comentario</button>
-       </div>
-     </form>
-   </div>
- </div>
+<!--HITO-->
+<br>
+<div class="container">
 
 <?php
 
-$sql = "SELECT * FROM HITOS_USUARIO WHERE idHito=?";
+$sql = "SELECT * FROM ANUNCIO WHERE idAnuncio=?";
 $resultado=Conexion::$conexion->prepare($sql);
-$resultado->execute(array($_POST['idHito']));
+$resultado->execute(array($_POST['idAnuncio']));
 while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
 echo "
-<br>
-<div class=\"container\">
-<h3>Hito</h3>
+
 <ul class=\"list-group\">
-  <li class=\"list-group-item active\">".$registro['idUsuario']."</li>
-  <li class=\"list-group-item\">Fecha de publicacion:".$registro['fecha']."</li>
-  <li class=\"list-group-item\">Fecha Suceso:".$registro['fechaSuceso']." Fuente:".$registro['fuente']."</li>
-  <li class=\"list-group-item\">".$registro['descripcion']."</li>
-  <li class=\"list-group-item\">".$registro['comentarioCreador']."</li>
+  <li class=\"list-group-item list-group-item-success\">".$registro['nombreDeEmpresa'].":".$registro['nombre']."</li>
+  <li class=\"list-group-item\">Descripcion:".$registro['descripcion']."</li>
+  <li class=\"list-group-item\">Direccion:".$registro['direccion']."</li>
+
 </ul>
+<br>
+<div class=\"text-center\">
+<img src=\"../anuncios/".$registro['direccionImagen']."\" id=\"imagenDeAnuncio\" class=\"cambio-imagen\" width=\"800\" height=\"453\">
 </div>
+
 ";
 }
 
  ?>
-<br>
- <div class="container" id="seccionComentarios">
-   <h3>Comentarios</h3>
-   <div class="" id="comentarios">
+</div>
 
-   </div>
- </div>
+
+</div>
 
  <!-- MODAL PARA VER LAS IMAGENES -->
  <!-- Modal -->
@@ -123,7 +134,7 @@ echo "
  </div>
 
 
-     <script type="text/javascript" src="comentariosHito.js"></script>
+     <script type="text/javascript" src="accionAnuncio.js"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
    </body>
  </html>

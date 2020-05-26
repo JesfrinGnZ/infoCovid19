@@ -56,20 +56,31 @@ session_start();
      </header><!-- End Header -->
      <br><br><br><br>
 
+<!--OPCIONES PARA HITO--->
+<div class="section" id="hitoActual">
+  <div class="section" id="crearAnuncio" class="contact section-bg">
+    <div class="container">
+      <h3>Opciones para hito</h3>
+      <?php
+       echo "<button type=\"button\"";
+       $sql = "SELECT verificado FROM HITOS_USUARIO WHERE idHito=?";
+       $resultado=Conexion::$conexion->prepare($sql);
+       $resultado->execute(array($_POST['idHito']));
+       while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+         if($registro['verificado']==1){
+           echo "id=\"accionHito\" class=\"btn btn-warning\">Desactivar";
+         }else{
+           echo "id=\"accionHito\" class=\"btn btn-info\">Activar";
+         }
+       }
+       echo "</button>";
+       ?>
+      <button type="button" id="borrarHito" class="buscar-hitos btn btn-danger">Borrar</button>
 
- <div class="section" id="crearAnuncio" class="contact section-bg">
-   <div class="container">
-     <form id="formComentario" action="#" method="post">
-       <div class="form-group">
-         <textarea  required id="comentario" name="comentario" class="form-control" rows="4" placeholder="Comentario*"></textarea>
-       </div>
-       <div class="form-group text-center">
-         <button type="button" class="guardar-comentario btn btn-info">Guardar Comentario</button>
-       </div>
-     </form>
-   </div>
- </div>
+    </div>
+  </div>
 
+<!--HITO-->
 <?php
 
 $sql = "SELECT * FROM HITOS_USUARIO WHERE idHito=?";
@@ -92,13 +103,30 @@ echo "
 }
 
  ?>
-<br>
- <div class="container" id="seccionComentarios">
-   <h3>Comentarios</h3>
-   <div class="" id="comentarios">
 
-   </div>
- </div>
+
+
+<?php
+/*******Comentarios*******/
+
+$sql="SELECT t1.idComentarioHito,t1.descripcion,t1.fecha,t2.idUsuario FROM COMENTARIO_HITO AS t1 INNER JOIN USUARIO AS t2 ON t1.correoUsuario=t2.correoUsuario WHERE t1.idHito=? ORDER BY fecha DESC";
+$resultado=Conexion::$conexion->prepare($sql);
+$resultado->execute(array($_POST['idHito']));
+echo "<div class=\"container\"><h3>Comentarios</h3>";
+while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+echo "
+<ul class=\"list-group\">
+  <li class=\"list-group-item list-group-item-danger\">".$registro['idUsuario']."</li>
+  <li class=\"list-group-item\">Fecha de publicacion:".$registro['fecha']."</li>
+  <li class=\"list-group-item\">".$registro['descripcion']."</li>
+</ul>
+<br>
+";
+}
+echo "</div>";
+ ?>
+
+</div>
 
  <!-- MODAL PARA VER LAS IMAGENES -->
  <!-- Modal -->
@@ -123,7 +151,7 @@ echo "
  </div>
 
 
-     <script type="text/javascript" src="comentariosHito.js"></script>
+     <script type="text/javascript" src="accionHito.js"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
    </body>
  </html>

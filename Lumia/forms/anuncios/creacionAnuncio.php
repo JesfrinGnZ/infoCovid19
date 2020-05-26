@@ -54,9 +54,11 @@
 
       include ("../../Conexion/Conexion.php");
       $correo=$_POST['correo'];
+      $nombreDeEmpresa=$_POST['nombreDeEmpresa'];
       $descripcion=$_POST['descripcionAnuncio'];
       $nombre=$_POST['nombreAnuncio'];
-      $link="link.link";
+      $link=$_POST['link'];
+      $direccion =$_POST['lugarAnuncio'];
       $nombreImagen =$_FILES['imagen']['name'];
       $tipoImagen=$_FILES['imagen']['type'];
       $tamanoImagen=$_FILES['imagen']['size'];
@@ -72,10 +74,10 @@
       if($nombre=="" || $descripcion==""){
         //echo "NOMBRE O DESCRIPCION NULAS";
       }else{
-        $sql = "INSERT INTO ANUNCIO(correoUsuario,descripcion,nombre,linkParaDeshabilitar,verificado,direccionImagen) VALUES(?,?,?,?,?,?)";
+        $sql = "INSERT INTO ANUNCIO(correoUsuario,descripcion,nombre,verificado,direccionImagen,direccion,nombreDeEmpresa,linkPagina) VALUES(?,?,?,?,?,?,?,?)";
         $resultado=Conexion::$conexion->prepare($sql);
         try {
-          $resultado->execute(array($correo,$descripcion,$nombre,$link,0,$rutaRelativaImagen));
+          $resultado->execute(array($correo,$descripcion,$nombre,'0',$rutaRelativaImagen,$direccion,$nombreDeEmpresa,$link));
           //echo "1";
           //echo "Su anuncio se ha registrado";
           echo "<div class=\"text-center\">
@@ -103,7 +105,7 @@
                 </div>";
 
             //echo "ERROR AL INGRESAR";
-            //echo $e->getMessage();
+            echo $e->getMessage();
         }
       }
 

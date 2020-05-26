@@ -105,9 +105,6 @@
   }
 </style>
 
-<div id="publicidad" class="col-lg-2">
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</div>
 
   <main id="main">
 
@@ -121,6 +118,11 @@
           echo "<form id=\"login-form\" class=\"form\" action=\"validacionUsuarioAnuncio.php\" method=\"post\">";
           echo "<button type=\"submit\" class=\"btn btn-primary\">Administrar Anuncios</button>";
           echo "</form>";
+          echo "<br>";
+          echo "<form id=\"login-form\" class=\"form\" action=\"forms/anuncios/tablonIndex.php\" method=\"post\">";
+          echo "<button type=\"submit\" class=\"btn btn-primary\">Tablon de anuncios</button>";
+          echo "</form>";
+
         }else{
           echo "<h3 class=\"text-center\">Anunciate con nosotros<h3>";
           echo "<form action=\"forms/login.php\" method=\"post\">
@@ -131,11 +133,6 @@
     </div>
   </div>
 </section>
-
-
-<div class="container">
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</div>
 
 
 
@@ -347,10 +344,6 @@
     </section><!-- End Portfolio Section -->
 
 
-    <div class="container">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </div>
-
 
     <!--==============Seccion Hitos=========== -->
 <?php
@@ -412,12 +405,6 @@ echo "</div>
      ?>
 
 
-
-    <div class="container">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </div>
-
-
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact section-bg">
       <div class="container">
@@ -435,20 +422,20 @@ echo "</div>
               <div class="row">
                 <div class="col-lg-4 info">
                   <i class="icofont-google-map"></i>
-                  <h4>Location:</h4>
-                  <p>A108 Adam Street<br>New York, NY 535022</p>
+                  <h4>Lugar:</h4>
+                  <p>Guatemala<br>Guatemala</p>
                 </div>
 
                 <div class="col-lg-4 info mt-4 mt-lg-0">
                   <i class="icofont-envelope"></i>
                   <h4>Email:</h4>
-                  <p>info@example.com<br>contact@example.com</p>
+                  <p>cuncoc@edu.gt<br>jess2298gnz@gmail.com</p>
                 </div>
 
                 <div class="col-lg-4 info mt-4 mt-lg-0">
                   <i class="icofont-phone"></i>
-                  <h4>Call:</h4>
-                  <p>+1 5589 55488 51<br>+1 5589 22475 14</p>
+                  <h4>Llamanos:</h4>
+                  <p>+502 5589 55488<br>+502 5589 22475</p>
                 </div>
               </div>
             </div>

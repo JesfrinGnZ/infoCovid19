@@ -40,6 +40,7 @@
             <li><a href="#crearAnuncio">Crear anuncio</a></li>
             <li><a href="#misAnuncios">Mis anuncios</a></li>
             <li><a href="../hitos/hitosIndex.php">Hitos</a></li>
+            <li><a href="tablonIndex.php">Tablon Anuncios</a></li>
             <li><a href="../../cerrarSesion.php">Cerrar sesion</a></li>
         <?php
         if(isset($_SESSION['usuario'])){
@@ -63,13 +64,19 @@
             echo "<input type=\"hidden\" name=\"correo\" id=\"correo\" value=\"".$_SESSION['correo']."\">";
           } ?>
           <div class="form-group">
-            <input  required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="nombreAnuncio" name="nombreAnuncio" placeholder="nombre de Anuncio*">
+            <input  required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="nombreDeEmpresa" name="nombreDeEmpresa" placeholder="Nombre de empresa o negocio*">
+          </div>
+          <div class="form-group">
+            <input  required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="nombreAnuncio" name="nombreAnuncio" placeholder="Nombre de Anuncio*">
           </div>
           <div class="form-group">
             <input required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="descripcionAnuncio" name="descripcionAnuncio" placeholder="Descripcion de Anuncio*">
           </div>
           <div class="form-group">
             <input required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="link" name="link" placeholder="link">
+          </div>
+          <div class="form-group">
+            <input  required autocomplete="off" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text" id="lugarAnuncio" name="lugarAnuncio" placeholder="Lugar*">
           </div>
           <div class="form-group">
             <input required type="file" id="imagen" name="imagen" size="20" class="form-control">

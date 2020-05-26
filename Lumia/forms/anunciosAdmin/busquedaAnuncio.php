@@ -11,7 +11,7 @@ include ("../../Conexion/Conexion.php");
        $json=array();
        while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
            $json[]=array(
-             'idAnuncio' => $registro['idAnuncio '],
+             'idAnuncio' => $registro['idAnuncio'],
              'correoUsuario' => $registro['correoUsuario'],
              'descripcion' => $registro['descripcion'],
              'nombre' => $registro['nombre'],
