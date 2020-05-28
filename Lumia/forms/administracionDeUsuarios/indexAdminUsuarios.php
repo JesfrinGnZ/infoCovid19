@@ -3,7 +3,7 @@
   <head>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <meta charset="utf-8">
-    <title>Hitos</title>
+    <title>Tablon de Anuncios</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -28,7 +28,7 @@
       <div class="container d-flex align-items-center">
 
         <div class="logo mr-auto">
-          <h2>Hitos</h2>
+          <h2>ACTIVACION DE USUARIOS</h2>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -37,8 +37,8 @@
           <ul>
             <!-- Button trigger modal -->
             <li><a href="../../indexCovid.php">Pagina principal</a></li>
-            <li><a href="../administracionDeUsuarios/indexAdminUsuarios.php">Admin.Usuarios</a></li>
             <li><a href="../anunciosAdmin/anuncioIndex.php">Admin.Anuncios</a></li>
+            <li><a href="../hitosAdmin/hitosIndex.php">Admin.Hitos</a></li>
             <li><a href="../../cerrarSesion.php">Cerrar sesion</a></li>
         <?php
         if(isset($_SESSION['usuario'])){
@@ -51,50 +51,54 @@
     </header><!-- End Header -->
     <br><br><br><br>
 
-<div class="section" id="misAnuncios">
-  <div class="container">
-      <div class="row d-flex justify-content-center">
-        <div class="form-group col-md-10">
-          <div>
-            <select id="seleccionTipoDeHitos" class="browser-default custom-select">
-              <option value="todosAprobados">Todos los aprobados</option>
-              <option value="todosSinAprobar">Todos sin aprobar</option>
-              <option value="todos">Todos</option>
 
-            </select>
+    <div class="section" id="misAnuncios">
+      <div class="container">
+        <h3>Buscar Usuarios</h3>
+          <div class="row d-flex justify-content-center">
+            <div class="form-group col-md-10">
+              <div>
+                <select id="seleccionTipoDeAnuncios" class="browser-default custom-select">
+                  <option value="usuariosAprobados">Usuarios aprobados</option>
+                  <option value="usuariosSinAprobar">Usuarios sin aprobar</option>
+                  <option value="todos">Todos los usuarios</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button type="button" class="buscar-usuarios btn btn-info">Buscar</button>
+            </div>
           </div>
-        </div>
-        <div class="col-md-2">
-          <button type="button" class="buscar-Hitos btn btn-info">Buscar</button>
-        </div>
-      </div>
-  </div>
-</div>
-
-
-
-<!-- MODAL PARA VER LAS IMAGENES -->
-<!-- Modal -->
-<div class="modal fade" id="modalImagen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Imagen de anuncio</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-                <img src="imagenesAnuncios/km.jpg" id="imagenDeAnuncio" class="cambio-imagen"width="400" height="453">
       </div>
     </div>
+<!--
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="form-group col-md-12">
+            <div>
+              <input class="form-control" type="text" id="buscarUsuarioTexto" name="buscarAnuncioTexto" placeholder="Ingrese una palabra clave">
+            </div>
+          </div>
+        </div>
+    </div>
+-->
+<div class="container">
+  <div class="form-group" id="anunciosBuscados">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Correo</th>
+          <th scope="col">idUsuario</th>
+          <th scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody id="usuarios"></tbody>
+    </table>
   </div>
 </div>
 
-<div class="container" id="misHitos">
-</div>
 
-    <script type="text/javascript" src="hitos.js"></script>
+    <script type="text/javascript" src="usuarios.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -37,9 +37,8 @@
           <ul>
             <!-- Button trigger modal -->
             <li><a href="../../indexCovid.php">Pagina principal</a></li>
-            <li><a href="#crearAnuncio">Crear Hito</a></li>
-            <li><a href="#misAnuncios">Mis Hitos</a></li>
             <li><a href="../anuncios/anuncioIndex.php">Anuncios</a></li>
+            <li><a href="../anuncios/tablonIndex.php">Tablon Anuncios</a></li>
             <li><a href="../../cerrarSesion.php">Cerrar sesion</a></li>
         <?php
         if(isset($_SESSION['usuario'])){
@@ -63,7 +62,8 @@
             echo "<input type=\"hidden\" name=\"correo\" id=\"correo\" value=\"".$_SESSION['correo']."\">";
           } ?>
           <div class="form-group">
-            <input id="fechaSuceso" name="fechaSuceso" class="form-control" type="date" value="2000-01-01" required>
+            <h5>Fecha del suceso:</h5>
+            <input id="fechaSuceso" name="fechaSuceso" class="form-control" type="date" value="2020-01-01" required>
           </div>
           <div class="form-group">
             <textarea  id="detalle" name="detalle" class="form-control" rows="5" placeholder="Detalle del suceso*"></textarea>

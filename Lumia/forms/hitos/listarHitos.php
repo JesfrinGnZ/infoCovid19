@@ -15,14 +15,25 @@ if($filtro=="todos"){
   $resultado=Conexion::$conexion->prepare($sql);
   $resultado->execute();
   while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    if($registro['verificado']==0){
+      $verificado ="NO VERIFICADO";
+    }else{
+      $verificado="VERIFICADO";
+    }
+    if($registro['comentarioCreador']==""){
+      $comentarioCreador="";
+    }else{
+      $comentarioCreador=$registro['comentarioCreador'];
+    }
+
             $json[]=array(
                 'idHito' => $registro['idHito'],
                 'idUsuario' => $registro['idUsuario'],
                 'fuente' => $registro['fuente'],
                 'descripcion' => $registro['descripcion'],
-                'comentarioCreador' => $registro['comentarioCreador'],
+                'comentarioCreador' => $comentarioCreador,
                 'fecha' => $registro['fecha'],
-                'verificado' => $registro['verificado'],
+                'verificado' => $verificado,
                 'fechaSuceso' => $registro['fechaSuceso']
             );
           }
@@ -33,14 +44,24 @@ if($filtro=="todos"){
   $resultado=Conexion::$conexion->prepare($sql);
   $resultado->execute();
   while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    if($registro['verificado']==0){
+      $verificado ="NO VERIFICADO";
+    }else{
+      $verificado="VERIFICADO";
+    }
+    if($registro['comentarioCreador']==""){
+      $comentarioCreador="";
+    }else{
+      $comentarioCreador=$registro['comentarioCreador'];
+    }
             $json[]=array(
                 'idHito' => $registro['idHito'],
                 'idUsuario' => $registro['idUsuario'],
                 'fuente' => $registro['fuente'],
                 'descripcion' => $registro['descripcion'],
-                'comentarioCreador' => $registro['comentarioCreador'],
+                'comentarioCreador' => $comentarioCreador,
                 'fecha' => $registro['fecha'],
-                'verificado' => $registro['verificado'],
+                'verificado' => $verificado,
                 'fechaSuceso' => $registro['fechaSuceso']
             );
           }
@@ -52,14 +73,24 @@ if($filtro=="todos"){
   $resultado=Conexion::$conexion->prepare($sql);
   $resultado->execute();
   while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    if($registro['verificado']==0){
+      $verificado ="NO VERIFICADO";
+    }else{
+      $verificado="VERIFICADO";
+    }
+    if($registro['comentarioCreador']==""){
+      $comentarioCreador="";
+    }else{
+      $comentarioCreador=$registro['comentarioCreador'];
+    }
             $json[]=array(
                 'idHito' => $registro['idHito'],
                 'idUsuario' => $registro['idUsuario'],
                 'fuente' => $registro['fuente'],
                 'descripcion' => $registro['descripcion'],
-                'comentarioCreador' => $registro['comentarioCreador'],
+                'comentarioCreador' => $comentarioCreador,
                 'fecha' => $registro['fecha'],
-                'verificado' => $registro['verificado'],
+                'verificado' => $verificado,
                 'fechaSuceso' => $registro['fechaSuceso']
             );
           }
@@ -70,14 +101,24 @@ if($filtro=="todos"){
     $resultado=Conexion::$conexion->prepare($sql);
     $resultado->execute(array($usuario));
     while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+      if($registro['verificado']==0){
+        $verificado ="NO VERIFICADO";
+      }else{
+        $verificado="VERIFICADO";
+      }
+      if($registro['comentarioCreador']==""){
+        $comentarioCreador="";
+      }else{
+        $comentarioCreador=$registro['comentarioCreador'];
+      }
               $json[]=array(
                   'idHito' => $registro['idHito'],
                   'idUsuario' => $registro['idUsuario'],
                   'fuente' => $registro['fuente'],
                   'descripcion' => $registro['descripcion'],
-                  'comentarioCreador' => $registro['comentarioCreador'],
+                  'comentarioCreador' => $comentarioCreador,
                   'fecha' => $registro['fecha'],
-                  'verificado' => $registro['verificado'],
+                  'verificado' => $verificado,
                   'fechaSuceso' => $registro['fechaSuceso']
               );
             }
@@ -89,14 +130,24 @@ if($filtro=="todos"){
   $resultado=Conexion::$conexion->prepare($sql);
   $resultado->execute(array($usuario));
   while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    if($registro['verificado']==0){
+      $verificado ="NO VERIFICADO";
+    }else{
+      $verificado="VERIFICADO";
+    }
+    if($registro['comentarioCreador']==""){
+      $comentarioCreador="";
+    }else{
+      $comentarioCreador=$registro['comentarioCreador'];
+    }
             $json[]=array(
                 'idHito' => $registro['idHito'],
                 'idUsuario' => $registro['idUsuario'],
                 'fuente' => $registro['fuente'],
                 'descripcion' => $registro['descripcion'],
-                'comentarioCreador' => $registro['comentarioCreador'],
+                'comentarioCreador' => $comentarioCreador,
                 'fecha' => $registro['fecha'],
-                'verificado' => $registro['verificado'],
+                'verificado' => $verificado,
                 'fechaSuceso' => $registro['fechaSuceso']
             );
           }
@@ -107,15 +158,24 @@ if($filtro=="todos"){
   $resultado=Conexion::$conexion->prepare($sql);
   $resultado->execute(array($usuario));
   while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
-
+    if($registro['verificado']==0){
+      $verificado ="NO VERIFICADO";
+    }else{
+      $verificado="VERIFICADO";
+    }
+    if($registro['comentarioCreador']==""){
+      $comentarioCreador="";
+    }else{
+      $comentarioCreador=$registro['comentarioCreador'];
+    }
             $json[]=array(
                 'idHito' => $registro['idHito'],
                 'idUsuario' => $registro['idUsuario'],
                 'fuente' => $registro['fuente'],
                 'descripcion' => $registro['descripcion'],
-                'comentarioCreador' => $registro['comentarioCreador'],
+                'comentarioCreador' => $comentarioCreador,
                 'fecha' => $registro['fecha'],
-                'verificado' => $registro['verificado'],
+                'verificado' => $verificado,
                 'fechaSuceso' => $registro['fechaSuceso']
             );
           }

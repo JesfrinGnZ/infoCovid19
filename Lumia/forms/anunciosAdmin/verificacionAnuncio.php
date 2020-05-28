@@ -41,7 +41,7 @@ session_start();
            <ul>
              <!-- Button trigger modal -->
              <li><a href="../../indexCovid.php">Pagina principal</a></li>
-             <li><a href="../hitos/hitosIndex.php">Hitos</a></li>
+             <li><a href="anuncioIndex.php">Volver</a></li>
              <li><a href="../../cerrarSesion.php">Cerrar sesion</a></li>
          <?php
          if(isset($_SESSION['usuario'])){

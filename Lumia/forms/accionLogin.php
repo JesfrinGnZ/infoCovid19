@@ -24,10 +24,15 @@
        $_SESSION['correo']=$correo;
        $_SESSION['tipoDeUsuario']=$tipoDeUsuario;
        $_SESSION['verificado']=$verificado;
+       if($tipoDeUsuario=="administrador"){
+         if($verificado==0){
+           header("Location: usuarioNoVerificado.php");
+           //echo "Tipo:".$tipoDeUsuario." VERIFICADO:".$verificado;
+         }
+       }
        header("Location: ../indexCovid.php");
      }else{
-       echo "NO SE ENCONTRO EL USUARIO";
-
+       header("Location: usuarioNoEncontrado.php");
      }
 
      ?>

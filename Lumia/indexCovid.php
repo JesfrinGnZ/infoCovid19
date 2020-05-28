@@ -108,32 +108,45 @@
 
   <main id="main">
 
-    <!-- ======= Seccion de publicidad ======= -->
-<section id="infoPublicidad">
-  <div class="container">
-    <div class="section-title">
-      <h2>Publicidad?</h2>
-      <?php
-        if(isset($_SESSION['usuario'])){
-          echo "<form id=\"login-form\" class=\"form\" action=\"validacionUsuarioAnuncio.php\" method=\"post\">";
-          echo "<button type=\"submit\" class=\"btn btn-primary\">Administrar Anuncios</button>";
-          echo "</form>";
-          echo "<br>";
-          echo "<form id=\"login-form\" class=\"form\" action=\"forms/anuncios/tablonIndex.php\" method=\"post\">";
-          echo "<button type=\"submit\" class=\"btn btn-primary\">Tablon de anuncios</button>";
-          echo "</form>";
+    <!-- ============Seccion perfil =============-->
+    <?php
 
-        }else{
-          echo "<h3 class=\"text-center\">Anunciate con nosotros<h3>";
-          echo "<form action=\"forms/login.php\" method=\"post\">
-                  <input class=\"btn btn-success\" type=\"submit\" value=\"Iniciar Sesion\">
+    if(isset($_SESSION['usuario'])){
+      echo "
+      <section id=\"perfil\">
+        <div class=\"container\">
+          <div class=\"section-title\">
+            <h2>Perfil</h2>";
+            echo "<div class=\"row\">";
+            echo "<div class=\"col-lg-6\">
+              <img src=\"assets/img/about.jpg\" class=\"img-fluid\" alt=\"\">
+              </div>";
+          //Consulta del usuario
+          echo "<div class=\"col-lg-6 pt-4 pt-lg-0 text-left\">";
+          echo "<ul class=\"list-group\">";
+          echo "<li class=\"list-group-item\"><strong>Correo:</strong>".$_SESSION['correo']."</li>";
+          echo "<li class=\"list-group-item\"><strong>Usuario:</strong>".$_SESSION['usuario']."</li>";
+          echo "<li class=\"list-group-item\"><strong>Tipo:</strong>".$_SESSION['tipoDeUsuario']."</li><br><br>";
+          echo "</ul>";
+          if($_SESSION['tipoDeUsuario']=="administrador"){
+            echo "<form action=\"forms/administracionDeUsuarios/indexAdminUsuarios.php\" method=\"post\">
+                    <input class=\"btn btn-danger\" type=\"submit\" value=\"Administrar usuarios\">
+                  </form>";
+            echo "</div>";
+
+          }
+          echo "<form action=\"cerrarSesion.php\" method=\"post\">
+                  <input class=\"btn btn-danger\" type=\"submit\" value=\"Cerrar Sesion\">
                 </form>";
-        }
-       ?>
-    </div>
-  </div>
-</section>
+          echo "</div>";
+          //FIn de trader_line
+          echo "</div>";
+      echo "</div>
+        </div>
+      </section>";
+    }
 
+     ?>
 
 
     <!-- ======= What We Do Section ======= -->
@@ -176,11 +189,7 @@
     </section><!-- End What We Do Section -->
     <!-- ======= Portfolio Section ======= -->
 
-    <div class="container">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </div>
 
-    <?php  ?>
 
     <section id="portfolio" class="portfolio">
       <div class="container">
@@ -208,7 +217,6 @@
               <figure>
                 <img src="assets/img/portfolio/covid/general.jpg" class="img-fluid" alt="">
                 <a href="assets/img/portfolio/covid/general.jpg" data-gall="portfolioGallery" class="link-preview venobox" title="Preview"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
               <div class="portfolio-info">
@@ -223,7 +231,6 @@
               <figure>
                 <img src="assets/img/portfolio/covid/general1.jpg" class="img-fluid" alt="">
                 <a href="assets/img/portfolio/covid/general1.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
               <div class="portfolio-info">
@@ -238,7 +245,6 @@
               <figure>
                 <img src="assets/img/portfolio/covid/ancianos.jpg" class="img-fluid" alt="">
                 <a href="assets/img/portfolio/covid/ancianos.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
               <div class="portfolio-info">
@@ -253,7 +259,6 @@
               <figure>
                 <img src="assets/img/portfolio/covid/ancianos2.jpg" class="img-fluid" alt="">
                 <a href="assets/img/portfolio/covid/ancianos2.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
               <div class="portfolio-info">
@@ -268,7 +273,6 @@
               <figure>
                 <img src="assets/img/portfolio/covid/ancianos3.png" class="img-fluid" alt="">
                 <a href="assets/img/portfolio/covid/ancianos3.png" class="link-preview venobox" data-gall="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
               <div class="portfolio-info">
@@ -283,7 +287,6 @@
               <figure>
                 <img src="assets/img/portfolio/covid/prevencion.jpg" class="img-fluid" alt="">
                 <a href="assets/img/portfolio/covid/prevencion.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
               <div class="portfolio-info">
@@ -298,7 +301,6 @@
               <figure>
                 <img src="assets/img/portfolio/covid/prevencion1.jpg" class="img-fluid" alt="">
                 <a href="assets/img/portfolio/covid/prevencion1.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
               <div class="portfolio-info">
@@ -313,7 +315,6 @@
               <figure>
                 <img src="assets/img/portfolio/covid/prevencion2.jpg" class="img-fluid" alt="">
                 <a href="assets/img/portfolio/covid/prevencion2.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
               <div class="portfolio-info">
@@ -328,7 +329,6 @@
               <figure>
                 <img src="assets/img/portfolio/covid/prevencion3.jpg" class="img-fluid" alt="">
                 <a href="assets/img/portfolio/covid/prevencion3.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
               <div class="portfolio-info">
@@ -342,6 +342,34 @@
 
       </div>
     </section><!-- End Portfolio Section -->
+
+
+        <!-- ======= Seccion de publicidad ======= -->
+    <section id="infoPublicidad">
+      <div class="container">
+        <div class="section-title">
+          <h2>Publicidad?</h2>
+          <?php
+            if(isset($_SESSION['usuario'])){
+              echo "<form id=\"login-form\" class=\"form\" action=\"validacionUsuarioAnuncio.php\" method=\"post\">";
+              echo "<button type=\"submit\" class=\"btn btn-primary\">Administrar Anuncios</button>";
+              echo "</form>";
+              echo "<br>";
+              echo "<form id=\"login-form\" class=\"form\" action=\"forms/anuncios/tablonIndex.php\" method=\"post\">";
+              echo "<button type=\"submit\" class=\"btn btn-success\">Tablon de anuncios</button>";
+              echo "</form>";
+
+            }else{
+              echo "<h3 class=\"text-center\">Anunciate con nosotros<h3>";
+              echo "<form action=\"forms/login.php\" method=\"post\">
+                      <input class=\"btn btn-success\" type=\"submit\" value=\"Iniciar Sesion\">
+                    </form>";
+            }
+           ?>
+        </div>
+      </div>
+    </section>
+
 
 
 
@@ -368,41 +396,6 @@ echo "</div>
   </div>
 </section>";
  ?>
-
-
-
-    <!-- ============Seccion perfil =============-->
-    <?php
-
-    if(isset($_SESSION['usuario'])){
-      echo "
-      <section id=\"perfil\">
-        <div class=\"container\">
-          <div class=\"section-title\">
-            <h2>Perfil</h2>";
-            echo "<div class=\"row\">";
-            echo "<div class=\"col-lg-6\">
-              <img src=\"assets/img/about.jpg\" class=\"img-fluid\" alt=\"\">
-              </div>";
-          //Consulta del usuario
-          echo "<div class=\"col-lg-6 pt-4 pt-lg-0 text-left\">";
-          echo "<ul class=\"list-group\">";
-          echo "<li class=\"list-group-item\"><strong>Correo:</strong>".$_SESSION['correo']."</li>";
-          echo "<li class=\"list-group-item\"><strong>Usuario:</strong>".$_SESSION['usuario']."</li>";
-          echo "<li class=\"list-group-item\"><strong>Tipo:</strong>".$_SESSION['tipoDeUsuario']."</li><br><br>";
-          echo "</ul>";
-          echo "<form action=\"cerrarSesion.php\" method=\"post\">
-                  <input class=\"btn btn-danger\" type=\"submit\" value=\"Cerrar Sesion\">
-                </form>";
-          echo "</div>";
-          //FIn de trader_line
-          echo "</div>";
-      echo "</div>
-        </div>
-      </section>";
-    }
-
-     ?>
 
 
     <!-- ======= Contact Section ======= -->

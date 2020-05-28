@@ -37,8 +37,6 @@
           <ul>
             <!-- Button trigger modal -->
             <li><a href="../../indexCovid.php">Pagina principal</a></li>
-            <li><a href="#crearAnuncio">Crear anuncio</a></li>
-            <li><a href="#misAnuncios">Mis anuncios</a></li>
             <li><a href="../hitos/hitosIndex.php">Hitos</a></li>
             <li><a href="tablonIndex.php">Tablon Anuncios</a></li>
             <li><a href="../../cerrarSesion.php">Cerrar sesion</a></li>
@@ -106,7 +104,7 @@
     <tr>
       <th scope="col">Nombre</th>
       <th scope="col">Descripcion</th>
-      <th scope="col">Link para deshabilitar</th>
+      <th scope="col">Link pagina</th>
       <th scope="col">Verificado</th>
       <th scope="col">Imagen</th>
       <th scope="col">Borrar</th>
@@ -133,7 +131,7 @@
         </button>
       </div>
       <div class="modal-body">
-                <img src="imagenesAnuncios/km.jpg" id="imagenDeAnuncio" class="cambio-imagen"width="400" height="453">
+                <img src="imagenesAnuncios/km.jpg" id="imagenDeAnuncio" class="cambio-imagen"width="500" height="453">
       </div>
 <!--          <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

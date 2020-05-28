@@ -36,8 +36,7 @@ function buscarAnuncios(){
           <form action="verificacionAnuncio.php" method="POST">
             <div class="form-group text-center">
               <input id="idHito" name="idAnuncio" type="hidden" value="${anuncio.idAnuncio}">
-              <input  type="submit" value="Ver ANUNCIOSSSSS" class="btn btn-danger">
-              ID ANUNCIO:${anuncio.idAnuncio}
+              <input  type="submit" value="Ver anuncio" class="btn btn-danger">
             </div>
           </form>
         `
@@ -86,8 +85,7 @@ function buscarAnunciosPorPalabraClave(){
             <form action="verificacionAnuncio.php" method="POST">
               <div class="form-group text-center">
                 <input id="idHito" name="idAnuncio" type="hidden" value="${anuncio.idAnuncio}">
-                <input  type="submit" value="Ver Hito" class="btn btn-danger">
-                ID ANUNCIO:${anuncio.idAnuncio}
+                <input  type="submit" value="Ver Anuncio" class="btn btn-danger">
               </div>
             </form>
 

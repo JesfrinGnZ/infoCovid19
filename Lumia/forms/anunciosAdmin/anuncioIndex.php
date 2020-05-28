@@ -28,7 +28,7 @@
       <div class="container d-flex align-items-center">
 
         <div class="logo mr-auto">
-          <h2>Tablon de Anuncios</h2>
+          <h2>Administrar Anuncios</h2>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -37,7 +37,8 @@
           <ul>
             <!-- Button trigger modal -->
             <li><a href="../../indexCovid.php">Pagina principal</a></li>
-            <li><a href="anuncioIndex.php">Crear anuncio</a></li>
+            <li><a href="../administracionDeUsuarios/indexAdminUsuarios.php">Admin.Usuarios</a></li>
+            <li><a href="../hitosAdmin/hitosIndex.php">Admin.Hitos</a></li>
             <li><a href="../../cerrarSesion.php">Cerrar sesion</a></li>
         <?php
         if(isset($_SESSION['usuario'])){

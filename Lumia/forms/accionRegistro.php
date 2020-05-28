@@ -23,18 +23,19 @@
       $_SESSION['correo']=$correo;
       $_SESSION['tipoDeUsuario']=$tipoDeUsuario;
       $_SESSION['verificado']=0;
-
-      header("Location: ../indexCovid.php");
+      if($tipoDeUsuario=="administrador"){
+        if($verificado==0){
+        header("Location: usuarioRegistradoNoVerificado.php");
+          echo "Tipo:".$tipoDeUsuario." VERIFICADO:".$verificado;
+        }
+      }else{
+        header("Location: ../indexCovid.php");
+      }
     } catch (PDOException $e) {
-      echo $e->getMessage();
+      //echo $e->getMessage();
+      header("Location: errorRegistro.php");
 
     }
-
-
-
-    //  $resultado->execute();
-      //$resultado->execute(array("dssada","normal","dsafasd","sdfasd"));
-
 
 
 

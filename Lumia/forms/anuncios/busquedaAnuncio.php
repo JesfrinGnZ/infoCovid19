@@ -1,6 +1,7 @@
 <?php
 include ("../../Conexion/Conexion.php");
  $search=$_POST['search'];
+ $verificado="";
  if(!empty($search)){
      $sql ="SELECT * FROM ANUNCIO WHERE nombre LIKE '%$search%' OR descripcion LIKE '%$search%' OR direccion LIKE '%$search%'";
      $resultado=Conexion::$conexion->prepare($sql);
@@ -10,16 +11,17 @@ include ("../../Conexion/Conexion.php");
      }else{
        $json=array();
        while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+         if($registro['verificado']==0){
+           $verificado="NO VERIFICADO";
+         }else{
+           $verificado="VERIFICADO";
+         }
            $json[]=array(
-             'idAnuncio' => $registro['idAnuncio '],
-             'correoUsuario' => $registro['correoUsuario'],
-             'descripcion' => $registro['descripcion'],
-             'nombre' => $registro['nombre'],
-             'verificado' => $registro['verificado'],
-             'direccionImagen' => $registro['direccionImagen'],
-             'direccion' => $registro['direccion'],
-             'nombreDeEmpresa' => $registro['nombreDeEmpresa'],
-             'linkPagina' => $registro['linkPagina']
+               'nombre' => $registro['nombre'],
+               'descripcion' => $registro['descripcion'],
+               'link' => $registro['linkPagina'],
+               'verificado' => $verificado,
+               'imagen' => $registro['direccionImagen']
            );
          }
          $jsonString = json_encode($json);

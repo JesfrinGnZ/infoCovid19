@@ -24,13 +24,14 @@ function obtenerHitos(){
         let hitos = JSON.parse(response);
         hitos.forEach(hito=>{
           template+= `
-            <ul class="list-group">
-              <li class="list-group-item active">${hito.idUsuario}</li>
-              <li class="list-group-item">Fecha de publicacion:${hito.fecha}</li>
-              <li class="list-group-item">${hito.fuente}Fecha Suceso:${hito.fechaSuceso}</li>
-              <li class="list-group-item">${hito.descripcion}</li>
-              <li class="list-group-item">${hito.comentarioCreador}</li>
-            </ul>
+          <ul class="list-group">
+            <li class="list-group-item active">${hito.idUsuario}</li>
+            <li class="list-group-item">${hito.verificado}</li>
+            <li class="list-group-item">Fecha de publicacion:${hito.fecha}</li>
+            <li class="list-group-item">Fuente:${hito.fuente}    Fecha Suceso:${hito.fechaSuceso}</li>
+            <li class="list-group-item">Descripcion: ${hito.descripcion}</li>
+            <li class="list-group-item">Comentario creador: ${hito.comentarioCreador}</li>
+          </ul>
             <br>
             <form action="verHito.php" method="POST">
               <div class="form-group text-center">

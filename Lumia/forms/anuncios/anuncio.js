@@ -140,21 +140,48 @@ busqueda
      $('#search').keyup(function(e){
        let search=$('#search').val();
        console.log(search);
-       //Enviando dato al servidor con AJAX
-       $.ajax({
-           type: "POST",
-           url: 'busquedaAnuncio.php',
-           data: {search},
-           success: function(response){
-             $('#parrafo').html(response);
-             //console.log(response);
-             let anuncios=JSON.parse(response);
-             anuncios.forEach(anuncio => {
-               console.log(anuncio);
-             });
+       if(search==""){
+         console.log("VACIO");
+         obtenerAnuncios();
+       }else{
+         //Enviando dato al servidor con AJAX
+         $.ajax({
+             type: "POST",
+             url: 'busquedaAnuncio.php',
+             data: {search},
+             success: function(response){
+               //$('#parrafo').html(response);
+               //console.log(response);
+               let anuncios=JSON.parse(response);
+               let template= '';
+               anuncios.forEach(anuncio=>{
+                 template+= `
+                  <tr nameAnuncio="${anuncio.nombre}">
+                    <td>
+                    <a href="#" class="anuncio-nombre">${anuncio.nombre}</a>
+                    </td>
+                    <td>${anuncio.descripcion}</td>
+                    <td>${anuncio.link}</td>
+                    <td>${anuncio.verificado}</td>
+                    <td>
+                        <button class="anuncio-imagen btn btn-info">
+                            Ver imagen
+                        </button>
+                    </td>
+                    <td>
+                        <button class="anuncio-delete btn btn-danger">
+                            Borrar
+                        </button>
+                    </td>
 
-          }
-      });
+                  </tr>
+                 `
+               });
+               $('#anuncios').html(template);
+            }
+        });
+       }
+
 
 
 
